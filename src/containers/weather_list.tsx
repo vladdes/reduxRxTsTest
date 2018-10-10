@@ -37,19 +37,21 @@ class WeatherList extends Component<IWeatherListProps, any> {
         const pressures: number[] = cityData.list.map((listItem: any) => { return listItem.main.pressure });
         const humidities: number[] = cityData.list.map((listItem: any) => { return listItem.main.humidity });
         const SparklinesStyle: React.CSSProperties = {
-            height: '200px',
-            width: '260px'
+            height: 'auto',
+            maxWidth: '260px'
         };
         return (
             <tr key={cityData.city.id}>
                 <td style={{verticalAlign: 'middle'}}>{cityData.city.name}</td>
                 <td>
-                    <Sparklines height={120} width={180} data={temps} style={SparklinesStyle}>
+                    {(Math.min(...temps) - 272.15).toFixed(0) }c - {(Math.max(...temps) - 272.15).toFixed(0) }c
+                    <Sparklines height={120} width={180} data={temps} style={SparklinesStyle} >
+                        
                         <SparklinesLine color="red" />
                     </Sparklines>
                 </td>
                 <td>
-                    <Sparklines height={120} width={180} data={pressures} style={SparklinesStyle}>
+                    <Sparklines height={120} width={180} data={pressures} style={SparklinesStyle} >
                         <SparklinesLine color="blue" />
                     </Sparklines>
                 </td>
