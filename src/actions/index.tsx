@@ -5,7 +5,7 @@ const WEATHER_ROOT_URL = `https://api.openweathermap.org/data/2.5/forecast?appid
 
 export const FETCH_WEATHER = 'FETCH_WEATHER'
 
-export function fetchWeather(city: any){
+export function fetchWeather(city: string){
     const url = `${WEATHER_ROOT_URL}&q=${city},se`;
     const requestPromise = axios.get(url);
     return {
